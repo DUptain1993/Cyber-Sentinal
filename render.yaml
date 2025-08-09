@@ -5,7 +5,7 @@ services:
     plan: free
     buildCommand: cd flask_dashboard && pip install -r requirements.txt
     startCommand: cd flask_dashboard && gunicorn -w 4 -b 0.0.0.0:8000 app:app
-    repo: https://github.com/yourusername/your-repo.git
+    repo: https://github.com/DUptain1993/Cyber-Sentinal.git
     branch: main
     rootDir: flask_dashboard
     envVars:
@@ -28,7 +28,7 @@ services:
     plan: free
     buildCommand: cd telegram_bot && pip install -r requirements.txt
     startCommand: cd telegram_bot && python bot.py
-    repo: https://github.com/yourusername/your-repo.git
+    repo: https://github.com/DUptain1993/Cyber-Sentinal.git
     branch: main
     rootDir: telegram_bot
     envVars:
