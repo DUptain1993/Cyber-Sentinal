@@ -1,0 +1,50 @@
+services:
+  - type: web
+    name: flask-dashboard
+    env: python
+    plan: free
+    buildCommand: cd flask_dashboard && pip install -r requirements.txt
+    startCommand: cd flask_dashboard && python app.py
+    repo: https://github.com/DUptain1993/Cyber-Sentinal.git
+    branch: main
+    rootDir: flask_dashboard
+    envVars:
+      - key: GOOGLE_EMAIL
+        fromFile:
+          path: .env
+          key: GOOGLE_EMAIL
+      - key: GOOGLE_PASSWORD
+        fromFile:
+          path: .env
+          key: GOOGLE_PASSWORD
+      - key: SECRET_KEY
+        fromFile:
+          path: .env
+          key: SECRET_KEY
+
+  - type: web
+    name: telegram-bot
+    env: python
+    plan: free
+    buildCommand: cd telegram_bot && pip install -r requirements.txt
+    startCommand: cd telegram_bot && python bot.py
+    repo: https://github.com/DUptain1993/Cyber-Sentinal.git
+    branch: main
+    rootDir: telegram_bot
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        fromFile:
+          path: .env
+          key: TELEGRAM_BOT_TOKEN
+      - key: CHAT_ID
+        fromFile:
+          path: .env
+          key: CHAT_ID
+      - key: GOOGLE_EMAIL
+        fromFile:
+          path: .env
+          key: GOOGLE_EMAIL
+      - key: GOOGLE_PASSWORD
+        fromFile:
+          path: .env
+          key: GOOGLE_PASSWORD

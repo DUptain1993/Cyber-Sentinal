@@ -1,0 +1,15 @@
+# Exclude the .env file
+.env
+
+# Exclude the uploads directory
+uploads/
+
+# Exclude Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Exclude Flask and Telegram bot log files
+instance/
+*.log
