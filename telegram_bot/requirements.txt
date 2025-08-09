@@ -1,7 +1,3 @@
 python-telegram-bot
 requests
-smtplib
-email
-csv
-os
 python-dotenv
