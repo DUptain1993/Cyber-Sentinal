@@ -1,5 +1,5 @@
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, CallbackContext, CallbackQueryHandler
+from telegram import Update
+from telegram.ext import Application, CommandHandler, CallbackContext
 import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -130,14 +130,13 @@ def main() -> None:
     global inventory
     inventory = load_inventory_from_csv('uploads/inventory.csv')
     application = Application.builder().token(os.getenv('TELEGRAM_BOT_TOKEN')).build()
-    dispatcher = application.dispatcher
 
-    dispatcher.add_handler(CommandHandler('buy_atm', buy_atm))
-    dispatcher.add_handler(CommandHandler('buy_info_stealer', buy_info_stealer))
-    dispatcher.add_handler(CommandHandler('buy_daily_fullz_x10', buy_daily_fullz_x10))
-    dispatcher.add_handler(CommandHandler('buy_daily_fullz_bulk', buy_daily_fullz_bulk))
-    dispatcher.add_handler(CommandHandler('buy_credit_cards_x5', buy_credit_cards_x5))
-    dispatcher.add_handler(CommandHandler('buy_credit_cards_x50', buy_credit_cards_x50))
+    application.add_handler(CommandHandler('buy_atm', buy_atm))
+    application.add_handler(CommandHandler('buy_info_stealer', buy_info_stealer))
+    application.add_handler(CommandHandler('buy_daily_fullz_x10', buy_daily_fullz_x10))
+    application.add_handler(CommandHandler('buy_daily_fullz_bulk', buy_daily_fullz_bulk))
+    application.add_handler(CommandHandler('buy_credit_cards_x5', buy_credit_cards_x5))
+    application.add_handler(CommandHandler('buy_credit_cards_x50', buy_credit_cards_x50))
 
     application.run_polling()
 
