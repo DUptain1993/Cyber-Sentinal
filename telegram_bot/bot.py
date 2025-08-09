@@ -1,5 +1,5 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackContext, CallbackQueryHandler
+from telegram.ext import Application, CommandHandler, CallbackContext, CallbackQueryHandler
 import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -129,8 +129,8 @@ def buy_credit_cards_x50(update: Update, context: CallbackContext) -> None:
 def main() -> None:
     global inventory
     inventory = load_inventory_from_csv('uploads/inventory.csv')
-    updater = Updater(token=os.getenv('TELEGRAM_BOT_TOKEN'), use_context=True)
-    dispatcher = updater.dispatcher
+    application = Application.builder().token(os.getenv('TELEGRAM_BOT_TOKEN')).build()
+    dispatcher = application.dispatcher
 
     dispatcher.add_handler(CommandHandler('buy_atm', buy_atm))
     dispatcher.add_handler(CommandHandler('buy_info_stealer', buy_info_stealer))
@@ -139,8 +139,7 @@ def main() -> None:
     dispatcher.add_handler(CommandHandler('buy_credit_cards_x5', buy_credit_cards_x5))
     dispatcher.add_handler(CommandHandler('buy_credit_cards_x50', buy_credit_cards_x50))
 
-    updater.start_polling()
-    updater.idle()
+    application.run_polling()
 
 if __name__ == '__main__':
     main()
