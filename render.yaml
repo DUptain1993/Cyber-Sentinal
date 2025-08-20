@@ -4,7 +4,7 @@ services:
     env: python
     plan: free
     buildCommand: cd flask_dashboard && pip install -r requirements.txt
-    startCommand: cd flask_dashboard && gunicorn -w 4 -b 0.0.0.0:8000 app:app
+    startCommand: cd flask_dashboard && gunicorn -w 4 -b 0.0.0.0:$PORT app:app
     repo: https://github.com/DUptain1993/Cyber-Sentinal.git
     branch: main
     rootDir: flask_dashboard

@@ -1,0 +1,11 @@
+runtime: python39
+entrypoint: cd flask_dashboard && gunicorn -b :$PORT app:app
+
+env_variables:
+  SECRET_KEY: "your-secret-key-here"
+
+handlers:
+  - url: /static
+    static_dir: flask_dashboard/static
+  - url: /.*
+    script: auto
