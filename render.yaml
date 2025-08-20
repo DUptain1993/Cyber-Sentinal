@@ -48,3 +48,19 @@ services:
         fromFile:
           path: .env
           key: GOOGLE_PASSWORD
+      - key: ADMIN_USERNAME
+        fromFile:
+          path: .env
+          key: ADMIN_USERNAME
+      - key: CRYPTO_ADDRESS
+        fromFile:
+          path: .env
+          key: CRYPTO_ADDRESS
+      - key: CASHAPP_USERNAME
+        fromFile:
+          path: .env
+          key: CASHAPP_USERNAME
+      - key: PAYPAL_EMAIL
+        fromFile:
+          path: .env
+          key: PAYPAL_EMAIL
